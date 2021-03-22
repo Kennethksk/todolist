@@ -1,20 +1,20 @@
-const model = require("./user");
+const model = require("./accounts");
 const bcrypt = require("bcrypt"); 
 const mongooseWrap = require ('../mongooseWrap');
 //const Role = require('./user');
 
-exports.createUser = async function(req, res){
+exports.createAccount = async function(req, res){
     let hash = await bcrypt.hash('test', 10);
 
-    let user = new model.User({
+    let account = new model.Account({
         email: "morten@iba.dk",
         password: test, 
         firstname: "Morten",
         lastname: "Due",
-        rights: model.Role.ADMIN
+        rights: model.Role.admin
       });
     
-    await mongooseWrap.save(user); 
+    await mongooseWrap.save(account); 
 }
 
 // const mongoose = require('mongoose');
