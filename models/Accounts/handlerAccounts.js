@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const account = require('./accounts');
+const Account = require('./accounts');
 const bcrypt = require('bcrypt');
 
 exports.getAccount = async function(query, sort) {
