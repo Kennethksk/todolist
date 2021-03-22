@@ -5,7 +5,7 @@ const accountsSchema = mongoose.Schema({
     password: String,
     firstname: String, 
     lastname: String,
-    rights: {type: String, enum: ["admin", "user", "xyz"], default: "xyz"}
+    rights: {type: String, enum: ["admin", "user", "awaiting"], default: "awaiting"}
 });
 
 module.exports = mongoose.model("Account", accountsSchema, 'accounts');
