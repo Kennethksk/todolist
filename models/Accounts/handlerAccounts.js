@@ -1,6 +1,6 @@
 const model = require("./user");
 const bcrypt = require("bcrypt"); 
-const mongooseWrap = require ('../../lib/mongooseWrap');
+const mongooseWrap = require ('../mongooseWrap');
 //const Role = require('./user');
 
 exports.createUser = async function(req, res){
@@ -8,9 +8,9 @@ exports.createUser = async function(req, res){
 
     let user = new model.User({
         email: "morten@iba.dk",
-        password: hash, 
+        password: test, 
         firstname: "Morten",
-        lastname: "Højrup Kristensen",
+        lastname: "Due",
         rights: model.Role.ADMIN
       });
     
