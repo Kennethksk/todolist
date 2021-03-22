@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const verifyAccount = require('../models/Accounts/handlerUsers');
+const verifyAccount = require('../models/accounts/handlerUsers');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
