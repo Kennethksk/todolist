@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Account = require('./accounts');
+const account = require('./accounts');
 const bcrypt = require('bcrypt');
 const getAccount = require('./handlerAccounts');
 
