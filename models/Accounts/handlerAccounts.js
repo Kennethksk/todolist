@@ -39,7 +39,21 @@ exports.createAccount = async function(req) {
             db.close(); 
         });
     });
-} 
+};
+
+exports.verifyAccount = async function (req) {
+    let check = { email: req.body.email };
+    let u = await getAccount.getAccount(check);
+    console.log(u[0]);
+    let success = await bcrypt.compare(req.body.password, u[0].password);
+    if (success) {
+        req.session.authenticated = true;       // set session vars
+        req.session.user = u[0].firstname;      // set session vars
+    } else {
+        req.session = null;
+    }
+    return success;
+};
 
 
 // const model = require("./accounts");

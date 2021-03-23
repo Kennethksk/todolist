@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const verifyAccount = require('../models/accounts/handlerUsers');
+const verifyAccount = require('../models/accounts/handlerAccounts');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -12,6 +12,7 @@ router.get('/login', function(req, res) {       // display register route
       title: 'User login'        // input data to view
   });
 });
+
 router.post('/login', async function(req, res) {// new user post route
   let rc = await verifyAccount.verifyAccount(req); // verify credentials
 
