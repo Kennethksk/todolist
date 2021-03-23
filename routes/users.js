@@ -40,10 +40,16 @@ router.get('/tasks', async function(req, res) {
   });
 });
 
-router.post('/tasks', async function(req, res, next) {
+router.get('/addTasks', function(req, res) {
+  res.render('addTasks', {
+      title: 'Create a task'        
+  });
+});
+
+router.post('/addTasks', async function(req, res, next) {
   let result = await tasks.createTasks(req);
-  res.render('tasks', {
-    title: "Task testing",
+  res.render('addTasks', {
+    title: "Create a task",
     tasks: result
   });
 });

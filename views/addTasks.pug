@@ -3,8 +3,8 @@ extends layout
 block content
   h1= Tasks
   p Welcome to #{title}
-  h2 Register new user:
-  form(action="/users/tasks" method="post")
+  h2 Create new task:
+  form(action="/users/addTasks" method="post")
     input(type="text" name="title" placeholder="Title" required)
     input(type="text" name="description" placeholder="Description" required)
     input(type="text" name="startDate" placeholder="Start date" required)
