@@ -11,22 +11,10 @@ block content
     input(type="text" name="deadline" placeholder="Deadline" required)
     input(type="submit" value="Create task")
 
-  each tasks in tasks
-
-      each author in book.authors
-
+  each task in tasks
         tr
-
-          td #{book.title}
-
-          td #{author.firstname} #{author.middlename} #{author.lastname}
-
-          td #{book.copyright}
-
-          td #{book.edition}
-
-          td #{book.published.publisher}
-
-          td #{book.published.year}
-
-          td #{book.published.place}
+          td #{task.title}
+          td #{task.description}
+          td #{task.startDate}
+          td #{task.deadline}
+          td #{task.status}
