@@ -12,9 +12,9 @@ block content
     input(type="submit" value="Create task")
 
   each task in tasks
-        tr
-          td #{task.title}
-          td #{task.description}
-          td #{task.startDate}
-          td #{task.deadline}
-          td #{task.status}
+        div
+          p Title: #{task.title}
+          p Description: #{task.description}
+          p Start date: #{task.startDate}
+          p Deadline: #{task.deadline}
+          p Status: #{task.status}

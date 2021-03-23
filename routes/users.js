@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const verifyAccount = require('../models/accounts/handlerAccounts');
+const tasks = require('../models/tasks/handlerTasks');
+const Tasks = require('../models/tasks/tasks');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -30,5 +32,12 @@ router.post('/login', async function(req, res) {// new user post route
   }
 });
 
+router.get('/tasks', async function(req, res) {
+  let result = await tasks.getTasks({}, {});  
+  res.render('tasks', {                       
+      title: 'Task testing',                  
+      tasks: result        
+  });
+});
 
 module.exports = router;
