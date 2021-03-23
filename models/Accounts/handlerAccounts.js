@@ -3,7 +3,7 @@ const Account = require('./accounts');
 const bcrypt = require('bcrypt');
 
 exports.getAccount = async function(query, sort) {
-    const dbname = "todolist";         // databasen hedder library
+    const dbname = "todolist";         // databasen hedder todolist
     const findDB = `mongodb://localhost:27017/${dbname}`;
     const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
     await mongoose.connect(findDB, conparam);
@@ -16,7 +16,7 @@ exports.getAccount = async function(query, sort) {
 };
 
 exports.createAccount = async function(req) {
-    const dbname = "todolist";         // databasen hedder library
+    const dbname = "todolist";         // databasen hedder todolist
     const findDB = `mongodb://localhost:27017/${dbname}`;
     const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
     await mongoose.connect(findDB, conparam);

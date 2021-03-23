@@ -9,7 +9,7 @@ exports.verifyAccount = async function (req) {
     let success = await bcrypt.compare(req.body.password, u[0].password);
     if (success) {
         req.session.authenticated = true;       // set session vars
-        req.session.user = u[0].firstName;      // set session vars
+        req.session.user = u[0].firstname;      // set session vars
     } else {
         req.session.destroy();
     }

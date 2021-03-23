@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= Tasks
+  p Welcome to #{title}
+  h2 Register new user:
+  form(action="#" method="post")
+    input(type="text" name="title" placeholder="Title" required)
+    input(type="text" name="description" placeholder="Description" required)
+    input(type="text" name="startDate" placeholder="Start date" required)
+    input(type="text" name="deadline" placeholder="Deadline" required)
+    input(type="submit" value="Create task")
+
+  each tasks in tasks
+
+      each author in book.authors
+
+        tr
+
+          td #{book.title}
+
+          td #{author.firstname} #{author.middlename} #{author.lastname}
+
+          td #{book.copyright}
+
+          td #{book.edition}
+
+          td #{book.published.publisher}
+
+          td #{book.published.year}
+
+          td #{book.published.place}
