@@ -20,13 +20,13 @@ router.post('/login', async function(req, res) {// new user post route
 
   if (rc) {
       res.render('index', {                   // find the view 'index'
-          title: 'nodeAuthDemo Home',         // input data to 'index'
+          title: 'Logget ind',         // input data to 'index'
           loggedin: true,
           who: req.session.user               // using session var(s)
       });
   } else {
       res.render('login', {                   // find the view 'login'
-          title: 'nodeAuthDemo User Login',   // input data to 'login'
+          title: 'Ikke logget ind',   // input data to 'login'
           loggedin: false
       });
   }
