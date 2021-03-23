@@ -4,7 +4,7 @@ block content
   h1= title
   p Welcome to #{title}
   h2 Register a new user:
-  form(action="/createUser" method="post")
+  form(action="/users/createUser" method="post")
     input(type="text" name="firstname" placeholder="First name" required)
     input(type="text" name="lastname" placeholder="Last name")
     input(type="email" name="email" placeholder="Email" required)

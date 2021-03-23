@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Account = require('./accounts');
 const bcrypt = require('bcrypt');
 
+
 module.exports = {
     getAccount: async function(query, sort) {
         const dbname = "todolist";         // databasen hedder todolist

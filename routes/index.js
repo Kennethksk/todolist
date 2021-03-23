@@ -8,16 +8,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home Page' });
 });
 
-router.get('/createUser', function(req, res, next) {
-  res.render('createUser', { title: 'Home Page' });
-});
-
-router.post('/createUser', async function(req, res, next) {
-  let result = await accounts.createAccount(req);
-  res.render('createUser', {
-    title: "Create a new user",
-    accounts: result
-  });
-});
-
 module.exports = router;

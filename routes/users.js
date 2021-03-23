@@ -1,12 +1,25 @@
 var express = require('express');
 var router = express.Router();
-const verifyAccount = require('../models/accounts/handlerAccounts');
+const account = require('../models/accounts/handlerAccounts');
 const tasks = require('../models/tasks/handlerTasks');
 const Tasks = require('../models/tasks/tasks');
+const Account = require('../models/accounts/accounts');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
+});
+
+router.get('/createUser', function(req, res, next) {
+  res.render('createUser', { title: 'Home Page' });
+});
+
+router.post('/createUser', async function(req, res, next) {
+  let result = await account.createAccount(req);
+  res.render('createUser', {
+    title: "Create a new user",
+    account: result
+  });
 });
 
 router.get('/login', function(req, res) {       // display register route
@@ -16,7 +29,7 @@ router.get('/login', function(req, res) {       // display register route
 });
 
 router.post('/login', async function(req, res) {// new user post route
-  let rc = await verifyAccount.verifyAccount(req); // verify credentials
+  let rc = await account.verifyAccount(req); // verify credentials
 
   if (rc) {
       res.render('index', {                   // find the view 'index'
