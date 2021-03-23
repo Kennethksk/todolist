@@ -31,7 +31,8 @@ module.exports = {
                 email: req.body.email,
                 password: hash,
                 firstname: req.body.firstname,
-                lastname: req.body.lastname
+                lastname: req.body.lastname,
+                rights: req.body.rights
             });
             Account.create(account, function(error, savedDocument) {
                 if (error) 
