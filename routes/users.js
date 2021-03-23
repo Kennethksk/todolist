@@ -40,4 +40,12 @@ router.get('/tasks', async function(req, res) {
   });
 });
 
+router.post('/tasks', async function(req, res, next) {
+  let result = await tasks.createTasks(req);
+  res.render('tasks', {
+    title: "Task testing",
+    tasks: result
+  });
+});
+
 module.exports = router;

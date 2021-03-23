@@ -14,7 +14,7 @@ exports.getTasks = async function(query, sort) {
     return result;
 };
 
-exports.createAccount = async function(req) {
+exports.createTasks = async function(req) {
     const dbname = "todolist";         // databasen hedder todolist
     const findDB = `mongodb://localhost:27017/${dbname}`;
     const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
