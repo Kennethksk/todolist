@@ -30,7 +30,6 @@ router.get('/login', function(req, res) {       // display register route
 
 router.post('/login', async function(req, res) {// new user post route
   let rc = await account.verifyAccount(req); // verify credentials
-
   if (rc) {
       res.render('index', {                   // find the view 'index'
           title: 'Logget ind',         // input data to 'index'
