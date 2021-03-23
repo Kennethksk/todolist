@@ -10,4 +10,4 @@ const tasksSchema = mongoose.Schema({
     completionDate: String
 });
 
-module.exports = mongoose.model("Tasks", tasksSchema, 'tasks');
+module.exports = mongoose.model("Task", tasksSchema, 'tasks');
