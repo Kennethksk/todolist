@@ -4,10 +4,18 @@ block content
   h1= Tasks
   p Welcome to #{title}
   h2 See tasks:
-  each task in tasks
-        div
-          p Title: #{task.title}
-          p Description: #{task.description}
-          p Start date: #{task.startDate}
-          p Deadline: #{task.deadline}
-          p Status: #{task.status}
+  table
+    tr 
+      th Start Date
+      th Title
+      th Description
+      th Deadline
+      th Status
+
+    each task in tasks
+      tr
+        td #{task.startDate}
+        td #{task.title}
+        td #{task.description}
+        td #{task.deadline}
+        td #{task.status}

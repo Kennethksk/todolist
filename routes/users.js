@@ -33,7 +33,7 @@ router.post('/login', async function(req, res) {// new user post route
   let rc = await account.verifyAccount(req); // verify credentials
   if (rc && req.session.rights === 'user' || req.session.rights === 'admin') {
         res.render('index', {                   // find the view 'index'
-            title: `Velkommen til din to do list`,         // input data to 'index'
+            title: 'Velkommen til din to do liste',         // input data to 'index'
             loggedin: true,
             who: req.session.user,               // using session var(s)
         });
