@@ -56,7 +56,10 @@ module.exports = {
         if (success) {
             req.session.authenticated = true;       // set session vars
             req.session.email = u[0].email;
-            req.session.rights = u[0].rights      // set session vars
+            req.session.rights = u[0].rights;      // set session vars
+            if (req.session.rights === "admin") {
+            admin = true
+            }
         } else {
             req.session.destroy(); //req.session = null;
         }
