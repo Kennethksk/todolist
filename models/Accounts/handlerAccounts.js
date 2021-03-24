@@ -53,7 +53,7 @@ module.exports = {
             req.session.authenticated = true;       // set session vars
             req.session.user = u[0].firstname;      // set session vars
         } else {
-            req.session = null;
+            req.session.destroy(); //req.session = null;
         }
         return success;
     }
