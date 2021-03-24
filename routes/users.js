@@ -4,6 +4,7 @@ const account = require('../models/accounts/handlerAccounts');
 const tasks = require('../models/tasks/handlerTasks');
 const Tasks = require('../models/tasks/tasks');
 const Account = require('../models/accounts/accounts');
+const accounts = require('../models/accounts/accounts');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -32,7 +33,7 @@ router.post('/login', async function(req, res) {// new user post route
   let rc = await account.verifyAccount(req); // verify credentials
   if (rc && req.session.rights === 'user' || req.session.rights === 'admin') {
         res.render('index', {                   // find the view 'index'
-            title: 'Logget ind',         // input data to 'index'
+            title: `Velkommen til din to do list`,         // input data to 'index'
             loggedin: true,
             who: req.session.user,               // using session var(s)
         });
@@ -45,33 +46,52 @@ router.post('/login', async function(req, res) {// new user post route
 });
 
 router.get('/tasks', async function(req, res) {
-  let result = await tasks.getTasks({}, {});  
-  res.render('tasks', {                       
-      title: 'Task testing',                  
-      tasks: result        
-  });
+  let result = await tasks.getTasks({}, {});
+  if(!req.session.authenticated) {
+    res.redirect('/users/login');
+  }
+  else {  
+    res.render('tasks', {                       
+        title: 'Task testing',                  
+        tasks: result        
+    });
+  }
 });
 
 router.get('/addTasks', function(req, res) {
-  res.render('addTasks', {
-      title: 'Create a task'        
-  });
+  if(!req.session.authenticated) {
+    res.redirect('/users/login');
+  }
+  else {
+    res.render('addTasks', {
+        title: 'Create a task'        
+    });
+  }
 });
 
 router.post('/addTasks', async function(req, res, next) {
   let result = await tasks.createTasks(req);
-  res.render('addTasks', {
+    res.render('addTasks', {
     title: "Create a task",
     tasks: result
   });
 });
 
 router.get('/awaiting', async function(req, res) {
-  let result = await account.getAccount({}, {});  
-  res.render('awaiting', {                       
+  let result = await account.getAccount({}, {});
+  if(!req.session.authenticated) {
+    res.redirect('/users/login');
+  }
+  else if (req.session.rights != 'admin') {
+    res.redirect('/users/tasks');
+  } 
+  else {
+    res.render('awaiting', {                       
       title: 'Awaiting users',                  
       accounts: result        
   });
+}
+
 });
 
 module.exports = router;
