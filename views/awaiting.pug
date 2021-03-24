@@ -3,10 +3,13 @@ extends layout
 block content
   h1= Tasks
   p Welcome to #{title}
-  h2 See tasks:
-  each account in accounts
-        div
-          p email: #{account.email}
-          p Description: #{account.rights}
-          hr
+  h2 See awaiting users:
+  table
+    tr 
+      th Email
+      th Rights
 
+    each account in accounts
+      tr
+        td #{account.email}
+        td #{account.rights}

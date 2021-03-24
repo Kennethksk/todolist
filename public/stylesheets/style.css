@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+th {
+  border: 1px solid #ddd;
+  padding: 1vh;
+  text-align: left;
+  background-color: cornflowerblue;
+}
+
+td {
+  text-align: left;
+  border: 1px solid #ddd;
+  padding: 1vh;
+}
+
+tr:nth-child(even){
+  background-color: lightgray;
+}
