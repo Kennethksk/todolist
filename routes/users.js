@@ -49,8 +49,9 @@ router.get('/tasks', async function(req, res) {
   if(!req.session.authenticated) {                             // hvis ikke logget ind direkte tilbage ingen grund til at læse først
     res.redirect('/users/login');
   } else {
-    let check = { mail: req.session.email };               // obj der udpeger den indloggede user
+    let check = { email: req.session.email };               // obj der udpeger den indloggede user
     let result = await tasks.getTasks(check, {});        // læs kun dennes todos
+    console.log(result);
     res.render('tasks', {                      
         title: 'Task testing',                 
         tasks: result       
