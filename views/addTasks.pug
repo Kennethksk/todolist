@@ -7,6 +7,6 @@ block content
   form(action="/users/addTasks" method="post")
     input(type="text" name="title" placeholder="Title" required)
     input(type="text" name="description" placeholder="Description" required)
-    input(type="text" name="startDate" placeholder="Start date" required)
-    input(type="text" name="deadline" placeholder="Deadline" required)
+    input(type="date" name="startDate" placeholder="Start date" required)
+    input(type="date" name="deadline" placeholder="Deadline" required)
     input(type="submit" value="Create task")

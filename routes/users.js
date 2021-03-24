@@ -46,14 +46,14 @@ router.post('/login', async function(req, res) {// new user post route
 });
 
 router.get('/tasks', async function(req, res) {
-  let result = await tasks.getTasks({}, {});
-  if(!req.session.authenticated) {
+  if(!req.session.authenticated) {                             // hvis ikke logget ind direkte tilbage ingen grund til at læse først
     res.redirect('/users/login');
-  }
-  else {  
-    res.render('tasks', {                       
-        title: 'Task testing',                  
-        tasks: result        
+  } else {
+    let check = { mail: req.session.email };               // obj der udpeger den indloggede user
+    let result = await tasks.getTasks(check, {});        // læs kun dennes todos
+    res.render('tasks', {                      
+        title: 'Task testing',                 
+        tasks: result       
     });
   }
 });
@@ -89,9 +89,13 @@ router.get('/awaiting', async function(req, res) {
     res.render('awaiting', {                       
       title: 'Awaiting users',                  
       accounts: result        
-  });
-}
+    });
+  }
+});
 
+router.get('/logout', function(req, res) {
+  req.session.destroy();
+  res.redirect('/users/login');
 });
 
 module.exports = router;
