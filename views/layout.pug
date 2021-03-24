@@ -16,4 +16,7 @@ html
           a(href="/users/tasks") Show test Tasks
         li 
           a(href="/users/addTasks") Create a task
+        if admin
+          li 
+            a(href="/users/addTasks") Howdy
     block content

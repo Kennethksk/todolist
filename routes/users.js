@@ -30,12 +30,19 @@ router.get('/login', function(req, res) {       // display register route
 
 router.post('/login', async function(req, res) {// new user post route
   let rc = await account.verifyAccount(req); // verify credentials
-  if (rc) {
+  if (rc && req.session.rights === 'user') {
       res.render('index', {                   // find the view 'index'
           title: 'Logget ind',         // input data to 'index'
           loggedin: true,
-          who: req.session.user               // using session var(s)
+          who: req.session.user,               // using session var(s)
       });
+  } else if (rc && req.session.rights === 'admin') {
+    res.render('index', {                   // find the view 'index'
+        title: 'Logget ind',         // input data to 'index'
+        loggedin: true,
+        who: req.session.user,               // using session var(s)
+        admin: true
+    });
   } else {
       res.render('login', {                   // find the view 'login'
           title: 'Ikke logget ind',   // input data to 'login'
