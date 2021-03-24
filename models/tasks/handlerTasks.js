@@ -29,6 +29,7 @@ exports.createTasks = async function(req) {
         description: req.body.description,
         startDate: req.body.startDate,
         deadline: req.body.deadline,
+        email: req.session.email
     });
     Task.create(task, function(error, savedDocument) {
         if (error) 

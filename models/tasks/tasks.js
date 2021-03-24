@@ -9,7 +9,7 @@ const tasksSchema = mongoose.Schema({
     deadline: String,
     status: {type: Boolean, default: false},
     completionDate: String,
-    email: req.session.email
+    email: String
 });
 
 module.exports = mongoose.model("Task", tasksSchema, 'tasks');
