@@ -12,11 +12,12 @@ html
           a(href="/users/createUser") Create user 
         li 
           a(href="/users/login") Login
-        li 
-          a(href="/users/tasks") Show test Tasks
-        li 
-          a(href="/users/addTasks") Create a task
-        if admin
+        if user || admin 
           li 
-            a(href="/users/addTasks") Howdy
+            a(href="/users/tasks") Show test Tasks
+          li 
+            a(href="/users/addTasks") Create a task
+          if admin
+            li 
+              a(href="/users/awaiting") Awaiting
     block content

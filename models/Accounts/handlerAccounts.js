@@ -60,6 +60,9 @@ module.exports = {
             if (req.session.rights === "admin") {
             admin = true
             }
+            if (req.session.rights === "user") {
+                user = true
+                }
         } else {
             req.session.destroy(); //req.session = null;
         }

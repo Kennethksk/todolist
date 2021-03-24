@@ -66,4 +66,12 @@ router.post('/addTasks', async function(req, res, next) {
   });
 });
 
+router.get('/awaiting', async function(req, res) {
+  let result = await account.getAccount({}, {});  
+  res.render('awaiting', {                       
+      title: 'Task testing',                  
+      accounts: result        
+  });
+});
+
 module.exports = router;
