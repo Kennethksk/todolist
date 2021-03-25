@@ -13,3 +13,9 @@ block content
       tr
         td #{account.email}
         td #{account.rights}
+        td 
+          a(href="users/approve")
+            button Approve
+        td 
+          a(href="users/decline")
+            button Decline

@@ -20,8 +20,7 @@ block content
         td #{task.deadline}
         td #{task.status}
         td
-          a(href="#" + task._id)
-            button Complete
+          a(href="/users/complete/" + task._id) Complete
         td 
-          a(href="#" + task._id)
-                Button Remove
+          a(href="/users/remove/" + task._id) Remove
+          
