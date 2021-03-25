@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Account = require('./accounts');
 const bcrypt = require('bcrypt');
+//const { query } = require('express');
+//const { delete } = require('../../app');
 
 
 module.exports = {
@@ -82,8 +84,10 @@ module.exports = {
         let arr = await module.exports.getAccount(check);
         let account = arr[0];
         console.log(account);
-        account.rights = "user";
-        Account.updateOne(account, function(error, savedDocument) {
+        let newQuery = account.toObject();
+        delete newQuery._id;
+        newQuery.rights = "user";
+        Account.updateOne(newQuery, {upsert:true}, function(error, savedDocument) {
             if (error) 
                 console.log(error);
             console.log(savedDocument);
