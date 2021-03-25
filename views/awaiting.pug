@@ -14,8 +14,6 @@ block content
         td #{account.email}
         td #{account.rights}
         td 
-          a(href="users/approve")
-            button Approve
+          a(href="/users/approve/" + account._id) Approve
         td 
-          a(href="users/decline")
-            button Decline
+          a(href="/users/decline/" + account._id) Decline

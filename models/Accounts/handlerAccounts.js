@@ -67,5 +67,27 @@ module.exports = {
             req.session.destroy(); //req.session = null;
         }
         return success;
-    }
+    },
+
+    approveAccount: async function(id) {
+        const dbname = "todolist";         // databasen hedder todolist
+        const findDB = `mongodb://localhost:27017/${dbname}`;
+        const conparam = { useNewUrlParser: true, useUnifiedTopology: true };
+        await mongoose.connect(findDB, conparam);
+        const db = mongoose.connection;
+        db.once("open", function() {
+        console.log("Connected to server by mongoose");
+        });
+        let check = {_id: id};
+        let arr = await module.exports.getAccount(check);
+        let account = arr[0];
+        console.log(account);
+        account.rights = "user";
+        Account.updateOne(account, function(error, savedDocument) {
+            if (error) 
+                console.log(error);
+            console.log(savedDocument);
+            db.close(); 
+        });
+    },
 };

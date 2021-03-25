@@ -9,10 +9,18 @@ const tasksSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    deadline: Date,
-    status: {type: Boolean, default: false},
-    completionDate: Date,
-    deletedDate: Date,
+    deadline: {
+        type: Date,
+        default: null
+    },
+    completionDate: {
+        type: Date,
+        default: null
+    },
+    deletedDate: {
+        type: Date,
+        default: null
+    },
     email: String
 });
 

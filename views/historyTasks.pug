@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1= Tasks
-  p Welcome to #{title}
+  h1= title
   h2 See tasks:
   table
     tr 
@@ -10,6 +9,8 @@ block content
       th Title
       th Description
       th Deadline
+      th Deleted date
+      th Completed date
 
     each task in tasks
       tr
@@ -17,7 +18,5 @@ block content
         td #{task.title}
         td #{task.description}
         td #{task.deadline}
-        td
-          a(href="/users/complete/" + task._id) Complete
-        td 
-          a(href="/users/remove/" + task._id) Remove
+        td #{task.deletedDate}
+        td #{task.completionDate}
