@@ -19,3 +19,9 @@ block content
         td #{task.description}
         td #{task.deadline}
         td #{task.status}
+        td
+          a(href="#" + task._id)
+            button Complete
+        td 
+          a(href="#" + task._id)
+                Button Remove
