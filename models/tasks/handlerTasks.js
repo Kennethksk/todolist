@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Task = require('./tasks');
+const dato = require('../date');
 
 module.exports = {
     getTasks: async function(query, sort) {
@@ -49,17 +50,17 @@ module.exports = {
         db.once("open", function() {
         console.log("Connected to server by mongoose");
         });
+
         let check = {_id: id};
-        let tasks = await module.exports.getTasks(check);
-        console.log(tasks);
-        let task = tasks[0];
-        task.completionDate = new Date();
-        task.deletedDate = task.completionDate;
-        Task.updateOne(task, function(error, savedDocument) {
-            if (error) 
+        let date = new Date();
+        Task.updateOne(check, { $set: {
+            completionDate: date,
+            deletedDate: date
+        }}, function(error, savedDocument) {
+            if (error)
                 console.log(error);
             console.log(savedDocument);
-            db.close(); 
+            db.close();
         });
     },
 
@@ -73,15 +74,16 @@ module.exports = {
         db.once("open", function() {
         console.log("Connected to server by mongoose");
         });
-        let check = {_id: id};
-        let tasks = await module.exports.getTasks(check);
-        let task = tasks[0];
-        task.deletedDate = new Date();
-        Task.updateOne(task, function(error, savedDocument) {
-            if (error) 
+
+       let check = {_id: id};
+        let date = new Date();
+        Task.updateOne(check, { $set: {
+            deletedDate: date
+        }}, function(error, savedDocument) {
+            if (error)
                 console.log(error);
             console.log(savedDocument);
-            db.close(); 
+            db.close();
         });
     }
 }

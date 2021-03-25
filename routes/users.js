@@ -103,7 +103,12 @@ router.get("/awaiting", async function (req, res) {
 });
 
 router.get("/approve/:id", async function (req, res) {
-  let result = await account.approveAccount({_id: req.params.id}, {});
+  let result = await account.approveAccount({email: req.params.id}, {});
+  res.redirect("/users/awaiting");  
+});
+
+router.get("/decline/:id", async function (req, res) {
+  let result = await account.declineAccount({email: req.params.id}, {});
   res.redirect("/users/awaiting");  
 });
 
