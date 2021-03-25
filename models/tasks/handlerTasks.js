@@ -52,7 +52,8 @@ module.exports = {
         });
 
         let check = {_id: id};
-        let date = new Date();
+        let date = dato.formatedDate();
+        console.log(date);
         Task.updateOne(check, { $set: {
             completionDate: date,
             deletedDate: date
@@ -76,7 +77,7 @@ module.exports = {
         });
 
        let check = {_id: id};
-        let date = new Date();
+        let date = dato.formatedDate();
         Task.updateOne(check, { $set: {
             deletedDate: date
         }}, function(error, savedDocument) {

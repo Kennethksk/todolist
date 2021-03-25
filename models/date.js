@@ -1,12 +1,13 @@
 exports.formatedDate = function() {
-    let now = new Date();
-    let s = "";
-    let month = now.getMonth() < 10 ? "0" + now.getMonth() : "" + now.getMonth();
-    let date = now.getDate() < 10 ? "0" + now.getDate() : "" + now.getDate();
-    let hours = now.getHours() < 10 ? "0" + now.getHours() : "" + now.getHours();
-    let mins = now.getMinutes() < 10 ? "0" + now.getMinutes() : "" + now.getMinutes();
-    let secs = now.getSeconds() < 10 ? "0" + now.getSeconds() : "" + now.getSeconds();
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
-    s += `${now.getFullYear()}-${month}-${date}`;
-    return s;
-}
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+};

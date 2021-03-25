@@ -1,24 +1,24 @@
 const mongoose = require("mongoose");
-
+const dato = require('../date');
 
 const tasksSchema = mongoose.Schema({
     userID: String,
     title: String,
     description: String,
     startDate: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: dato.formatedDate()
     },
     deadline: {
-        type: Date,
+        type: String,
         default: null
     },
     completionDate: {
-        type: Date,
+        type: String,
         default: null
     },
     deletedDate: {
-        type: Date,
+        type: String,
         default: null
     },
     email: String
